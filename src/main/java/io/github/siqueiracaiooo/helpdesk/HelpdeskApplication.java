@@ -10,8 +10,8 @@ public class HelpdeskApplication {
 
 	public static void main(String[] args) {
 		//SpringApplication.run(HelpdeskApplication.class, args);
-		User user = new User("nome teste da silva", "teste@teste.com", "senha123", AccountType.ADMIN);
-		System.out.println(user);
+		//User user = new User();
+		//System.out.println(user);
 
 
 	}

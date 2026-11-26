@@ -20,10 +20,13 @@ public class AccessProfile {
     @Column(nullable = false)
     private boolean active = true;
 
+    @Column(nullable = false, unique = true, length = 180)
+    private String email;
+
     protected AccessProfile() {
     }
 
-    public AccessProfile (String name, String description){
+    public AccessProfile(String name, String description) {
         setName(name);
         setDescription(description);
     }
@@ -43,7 +46,7 @@ public class AccessProfile {
         return name;
     }
     public void setName(String name) {
-        if (name == null || name.isBlank() ) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("setName cannot be null/blank");
         }
         this.name = name;
@@ -54,5 +57,12 @@ public class AccessProfile {
     }
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

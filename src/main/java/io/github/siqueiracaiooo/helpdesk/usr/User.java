@@ -13,14 +13,49 @@ public class User {
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
 
-        @Column(nullable = false, unique = true, length = 180)
-        private String email;
+        @Column(nullable = false, unique = true, length = 11)
+        private String cpf;
 
+        private String normalizeCpf(String cpf){
+            if (cpf == null){
+                throw new IllegalArgumentException("CPF cannot be null");
+            }
+            return cpf.replaceAll("\\D", "");
+        }
+
+        private int calculateFirstDigit(String cpf){
+            int sum = 0;
+
+            for (int i = 0; i<9; i++){
+                int digit = Character.getNumericValue(cpf.charAt(i));
+                sum += digit * (10 - i);
+            }
+            int remainder = sum %11;
+
+            if (remainder < 2){
+                return 0;
+            }
+            return 11 - remainder;
+        }
+
+         private boolean isValidCpf(String cpf){
+            cpf = normalizeCpf(cpf);
+
+            if (cpf.length() != 11) {
+                return false;
+            }
+
+             return cpf.chars().distinct().count() != 1;
+         }
+
+
+        @Column(nullable = false, unique = true, length = 20)
+        private String phoneNumber;
 
         protected User(){
     }
 
-    public User(String name, String email, String passwordHash, AccountType accountType) {
+    public User(String name, String cpf, String phoneNumber) {
     }
 
     public String getName() {
@@ -34,11 +69,5 @@ public class User {
         return id;
     }
 
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
 }
