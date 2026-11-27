@@ -20,8 +20,6 @@ public class AccessProfile {
     @Column(nullable = false)
     private boolean active = true;
 
-    @Column(nullable = false, unique = true, length = 180)
-    private String email;
 
     protected AccessProfile() {
     }
@@ -31,6 +29,8 @@ public class AccessProfile {
         setDescription(description);
     }
 
+
+    //Getters And Setters
     public Long getId() {
         return id;
     }
@@ -57,12 +57,5 @@ public class AccessProfile {
     }
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

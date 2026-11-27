@@ -15,7 +15,7 @@ public class Account {
     @Column(nullable = false)
     private AccountType accountType;
 
-
+//Getters And Setters
 
     public String getPasswordHash() {
         return passwordHash;

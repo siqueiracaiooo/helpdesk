@@ -1,7 +1,6 @@
 package io.github.siqueiracaiooo.helpdesk;
 
 import io.github.siqueiracaiooo.helpdesk.usr.AccountType;
-import io.github.siqueiracaiooo.helpdesk.usr.User;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
